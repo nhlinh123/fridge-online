@@ -1,0 +1,12 @@
+{
+  "name": "FridgeOS",
+  "short_name": "FridgeOS",
+  "description": "Tủ lạnh thông minh — Gợi ý món ăn từ nguyên liệu bạn có",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0F1A0F",
+  "theme_color": "#2ECC6E",
+  "icons": [],
+  "categories": ["food", "lifestyle", "utilities"]
+}
