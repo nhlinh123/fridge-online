@@ -1,0 +1,12 @@
+:root {
+  --color-primary-500: #38883F;
+  --color-neutral-50: #F7F8F5;
+  --surface-card: #fff;
+  --space-4: 1rem;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'DM Sans', system-ui, sans-serif; background: var(--color-neutral-50); }
+.container { max-width: 960px; margin: 0 auto; padding: var(--space-4); }
+.card { background: var(--surface-card); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+input, button { padding: .5rem; margin-right: .5rem; }
+nav a { margin-right: .75rem; }
