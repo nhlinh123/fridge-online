@@ -3,15 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 export function AppLayout({ children }: PropsWithChildren) {
   return (
-    <div className="container">
-      <h1>🥦 FridgeOS</h1>
-      <nav>
-        <NavLink to="/fridge">Tủ lạnh</NavLink>
-        <NavLink to="/recipes">Recipes</NavLink>
-        <NavLink to="/suggest">Gợi ý</NavLink>
-      </nav>
-      <hr />
+    <div className="app-shell">
+      <header className="app-header">
+        <div className="logo">🧊 Fridge<span>OS</span></div>
+      </header>
       {children}
+      <nav className="bottom-nav">
+        <NavLink to="/fridge" className={({ isActive }) => (isActive ? "active" : "")}>🧊<br />Tủ lạnh</NavLink>
+        <NavLink to="/recipes" className={({ isActive }) => (isActive ? "active" : "")}>📖<br />Recipes</NavLink>
+        <NavLink to="/suggest" className={({ isActive }) => (isActive ? "active" : "")}>✦<br />Gợi ý</NavLink>
+      </nav>
     </div>
   );
 }
