@@ -1,6 +1,6 @@
 import Dexie, { type EntityTable } from 'dexie';
-import type { Ingredient } from '../../domain/entities/Ingredient';
-import type { Recipe } from '../../domain/entities/Recipe';
+import type { Ingredient } from '../../domain/ingredient';
+import type { Recipe } from '../../domain/recipe';
 
 export class FridgeDB extends Dexie {
   ingredients!: EntityTable<Ingredient, 'id'>;
