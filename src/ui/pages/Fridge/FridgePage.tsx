@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { getExpiryStatus } from '../../../domain/ingredient';
 import { useFridgeStore } from '../../../store/useFridgeStore';
 
 const expiryLabel = {
@@ -9,7 +10,14 @@ const expiryLabel = {
 
 export function FridgePage() {
   const [name, setName] = useState('');
-  const ingredients = useFridgeStore((state) => state.ingredientViews());
+  const storedIngredients = useFridgeStore((state) => state.ingredients);
+  const ingredients = useMemo(
+    () => storedIngredients.map((ingredient) => ({
+      ...ingredient,
+      expiryStatus: getExpiryStatus(ingredient)
+    })),
+    [storedIngredients]
+  );
   const addIngredient = useFridgeStore((state) => state.addIngredient);
   const removeIngredient = useFridgeStore((state) => state.removeIngredient);
 
