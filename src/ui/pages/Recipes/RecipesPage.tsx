@@ -6,6 +6,7 @@ export function RecipesPage() {
   const [rawIngredients, setRawIngredients] = useState('');
   const recipes = useFridgeStore((state) => state.recipes);
   const addRecipe = useFridgeStore((state) => state.addRecipe);
+  const deleteRecipe = useFridgeStore((state) => state.deleteRecipe);
   const ingredientNameForRef = useFridgeStore((state) => state.ingredientNameForRef);
 
   return (
@@ -30,16 +31,24 @@ export function RecipesPage() {
           <button className="button" type="submit">Thêm recipe</button>
         </div>
       </form>
-      <div className="glass card">
-        <ul className="list">
-          {recipes.map((recipe) => (
-            <li key={recipe.id}>
+      <ul className="list">
+        {recipes.map((recipe) => (
+          <li className="glass card" key={recipe.id}>
+            <div className="item">
               <strong>{recipe.name}</strong>
-              <div className="muted">{recipe.items.map((item) => ingredientNameForRef(item.ingredientRef)).join(', ')}</div>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <span className="badge">{recipe.items.length} nguyên liệu</span>
+            </div>
+            <div className="chip-list" aria-label={`Nguyên liệu cho ${recipe.name}`}>
+              {recipe.items.map((item) => (
+                <span className="chip" key={item.ingredientRef}>{ingredientNameForRef(item.ingredientRef)}</span>
+              ))}
+            </div>
+            <button className="button button-danger" type="button" onClick={() => void deleteRecipe(recipe.id)}>
+              Xóa món
+            </button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

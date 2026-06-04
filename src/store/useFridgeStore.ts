@@ -18,6 +18,7 @@ interface FridgeStore {
   addIngredient: (name: string, quantity?: number, unit?: Unit, expiresAt?: Date) => Promise<void>;
   removeIngredient: (id: string) => Promise<void>;
   addRecipe: (name: string, ingredientNames: string[]) => Promise<void>;
+  deleteRecipe: (id: string) => Promise<void>;
   recompute: () => Promise<void>;
   ingredientViews: () => IngredientView[];
   ingredientNameForRef: (ingredientRef: string) => string;
@@ -55,6 +56,10 @@ export const useFridgeStore = create<FridgeStore>((set, get) => ({
       name,
       items: ingredientNames.map((ingredientName) => ({ name: ingredientName }))
     });
+    set(await loadState());
+  },
+  deleteRecipe: async (id) => {
+    await appContainer.deleteRecipe.execute(id);
     set(await loadState());
   },
   recompute: async () => {

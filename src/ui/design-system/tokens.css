@@ -80,6 +80,32 @@ body {
 .row { display: flex; gap: 8px; }
 .card { padding: 16px; margin-bottom: 12px; }
 
+.section-title { font-size: 16px; margin: 0 0 12px; }
+
+.button-danger {
+  width: 100%;
+  margin-top: 12px;
+  background: rgba(255, 107, 138, 0.12);
+  color: #ffc6d2;
+  border-color: rgba(255, 107, 138, 0.35);
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.chip {
+  border: 1px solid var(--border-frost);
+  border-radius: var(--r-full);
+  color: var(--text-secondary);
+  background: var(--frost-10);
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
 .badge {
   font-size: 12px;
   padding: 2px 8px;
