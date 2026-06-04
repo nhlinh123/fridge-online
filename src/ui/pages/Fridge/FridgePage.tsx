@@ -11,6 +11,7 @@ export function FridgePage() {
   const [name, setName] = useState('');
   const ingredients = useFridgeStore((state) => state.ingredientViews());
   const addIngredient = useFridgeStore((state) => state.addIngredient);
+  const removeIngredient = useFridgeStore((state) => state.removeIngredient);
 
   return (
     <section>
@@ -29,17 +30,20 @@ export function FridgePage() {
           <button className="button" type="submit">Thêm</button>
         </div>
       </form>
-      <div className="glass card">
-        <h3>Nguyên liệu hiện có</h3>
-        <ul className="list">
-          {ingredients.map((ingredient) => (
-            <li className="item" key={ingredient.id}>
+      <h3 className="section-title">Nguyên liệu hiện có</h3>
+      <ul className="list">
+        {ingredients.map((ingredient) => (
+          <li className="glass card" key={ingredient.id}>
+            <div className="item">
               <span>{ingredient.name}</span>
               <span className={`badge ${ingredient.expiryStatus}`}>{expiryLabel[ingredient.expiryStatus]}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </div>
+            <button className="button button-danger" type="button" onClick={() => void removeIngredient(ingredient.id)}>
+              Xóa nguyên liệu
+            </button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
